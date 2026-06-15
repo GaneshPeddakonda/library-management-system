@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fines – Library Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">📚 <span>Library MS</span></div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="books.html">Books</a>
+      <a href="members.html">Members</a>
+      <a href="issue-book.html">Issue/Return</a>
+      <a href="fines.html">Fines</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+    <div style="color:#fff;font-size:.85rem">👤 <span id="user-name"></span> &nbsp;
+      <a href="#" onclick="logout()" style="color:rgba(255,255,255,.7);font-size:.8rem">Logout</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1 class="page-title">Fines</h1>
+    </div>
+    <div id="alert-area"></div>
+    <div class="card">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Member</th><th>Book</th><th>Amount</th><th>Status</th></tr>
+          </thead>
+          <tbody id="fines-table"><tr><td colspan="5">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer><p>© 2026 Library Management System</p></footer>
+  <script src="js/api.js"></script>
+  <script src="js/fines.js"></script>
+</body>
+</html>

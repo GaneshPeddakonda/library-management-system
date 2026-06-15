@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports – Library Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">📚 <span>Library MS</span></div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="books.html">Books</a>
+      <a href="members.html">Members</a>
+      <a href="issue-book.html">Issue/Return</a>
+      <a href="fines.html">Fines</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+    <div style="color:#fff;font-size:.85rem">👤 <span id="user-name"></span> &nbsp;
+      <a href="#" onclick="logout()" style="color:rgba(255,255,255,.7);font-size:.8rem">Logout</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1 class="page-title">Reports</h1>
+      <button class="btn btn-primary" onclick="loadAll()">↻ Refresh</button>
+    </div>
+    <div id="alert-area"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+      <div class="card">
+        <div class="card-title">📚 Most Popular Books</div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Title</th><th>Author</th><th>Times Issued</th></tr></thead>
+            <tbody id="popular-table"><tr><td colspan="3">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">👥 Most Active Members</div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Name</th><th>Email</th><th>Books Borrowed</th></tr></thead>
+            <tbody id="members-table"><tr><td colspan="3">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer><p>© 2026 Library Management System</p></footer>
+  <script src="js/api.js"></script>
+  <script>
+    requireAuth();
+    async function loadAll() {
+      const [p, m] = await Promise.all([
+        apiCall('/reports/popular-books'),
+        apiCall('/reports/active-members')
+      ]);
+      const pt = document.getElementById('popular-table');
+      pt.innerHTML = p?.data?.length
+        ? p.data.map(b => `<tr><td>${b.title}</td><td>${b.author}</td><td><strong>${b.times_issued}</strong></td></tr>`).join('')
+        : '<tr><td colspan="3">No data yet</td></tr>';
+      const mt = document.getElementById('members-table');
+      mt.innerHTML = m?.data?.length
+        ? m.data.map(mb => `<tr><td>${mb.full_name}</td><td>${mb.email}</td><td><strong>${mb.books_borrowed}</strong></td></tr>`).join('')
+        : '<tr><td colspan="3">No data yet</td></tr>';
+    }
+    loadAll();
+  </script>
+</body>
+</html>

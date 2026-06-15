@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – Library Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">📚 <span>Library MS</span></div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="books.html">Books</a>
+      <a href="members.html">Members</a>
+      <a href="issue-book.html">Issue/Return</a>
+      <a href="fines.html">Fines</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+    <div style="color:#fff;font-size:.85rem">👤 <span id="user-name"></span> &nbsp;
+      <a href="#" onclick="logout()" style="color:rgba(255,255,255,.7);font-size:.8rem">Logout</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1 class="page-title">Dashboard</h1>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="value" id="stat-books">–</div>
+        <div class="label">Total Books</div>
+      </div>
+      <div class="stat-card" style="border-left-color:#16a34a">
+        <div class="value" style="color:#16a34a" id="stat-members">–</div>
+        <div class="label">Members</div>
+      </div>
+      <div class="stat-card" style="border-left-color:#d97706">
+        <div class="value" style="color:#d97706" id="stat-issued">–</div>
+        <div class="label">Active Issues</div>
+      </div>
+      <div class="stat-card" style="border-left-color:#dc2626">
+        <div class="value" style="color:#dc2626" id="stat-overdue">–</div>
+        <div class="label">Overdue Books</div>
+      </div>
+      <div class="stat-card" style="border-left-color:#7c3aed">
+        <div class="value" style="color:#7c3aed" id="stat-fines">–</div>
+        <div class="label">Fines Due</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem">
+      <div class="card">
+        <div class="card-title">Quick Actions</div>
+        <div style="display:flex;flex-direction:column;gap:.75rem">
+          <a href="books.html" class="btn btn-primary">📖 Manage Books</a>
+          <a href="members.html" class="btn btn-success">👥 Manage Members</a>
+          <a href="issue-book.html" class="btn btn-warning">🔄 Issue / Return Book</a>
+          <a href="fines.html" class="btn btn-secondary">💰 View Fines</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">System Info</div>
+        <p style="font-size:.875rem;color:#64748b;line-height:1.6">
+          Welcome to the Library Management System.<br><br>
+          Use the navigation above to manage books, members, issue and return books, and track fines.<br><br>
+          Stats refresh every time you visit this page.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer><p>© 2026 Library Management System</p></footer>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

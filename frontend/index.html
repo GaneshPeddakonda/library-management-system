@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero { text-align:center; padding: 5rem 1rem; }
+    .hero h1 { font-size:2.5rem; margin-bottom:1rem; }
+    .hero p  { font-size:1.1rem; color:#64748b; margin-bottom:2rem; max-width:500px; margin-left:auto; margin-right:auto; }
+    .hero-btns { display:flex; gap:1rem; justify-content:center; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="hero">
+      <div style="font-size:4rem">📚</div>
+      <h1>Library Management System</h1>
+      <p>Manage books, members, issues, returns and fines — all in one place.</p>
+      <div class="hero-btns">
+        <a href="login.html"    class="btn btn-primary" style="font-size:1rem;padding:.75rem 2rem">Login</a>
+        <a href="register.html" class="btn btn-outline" style="font-size:1rem;padding:.75rem 2rem">Register</a>
+      </div>
+    </div>
+  </main>
+  <script src="js/api.js"></script>
+  <script>if (getToken()) window.location.href = 'dashboard.html';</script>
+</body>
+</html>
