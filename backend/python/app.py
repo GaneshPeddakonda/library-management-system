@@ -16,7 +16,7 @@ from controllers.report_controller import report_bp
 from utils.helper import success, error
 
 app = Flask(__name__)
-CORS(app, origins=["https://stellular-longma-f325be.netlify.app])  # Allow frontend requests
+CORS(app)  # Allow frontend requests
 
 # ── Auth routes ────────────────────────────────────────────
 @app.route('/api/auth/login', methods=['POST'])
