@@ -1,5 +1,5 @@
 // js/api.js  –  API base config & shared helpers
-const API_BASE = 'https://library-management-system-zt6o.onrender.com/api';
+const API_BASE = 'https://library-management-system-sx56.onrender.com/api';
 
 function getToken() { return localStorage.getItem('lms_token'); }
 function getUser()  { try { return JSON.parse(localStorage.getItem('lms_user')); } catch { return null; } }
