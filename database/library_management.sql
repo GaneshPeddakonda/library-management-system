@@ -2,8 +2,7 @@
 -- Library Management System - Complete Database Schema
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS library_management;
-USE library_management;
+
 
 -- Users / Admins
 CREATE TABLE IF NOT EXISTS users (
@@ -37,7 +36,7 @@ CREATE TABLE IF NOT EXISTS members (
     email VARCHAR(100) UNIQUE NOT NULL,
     phone VARCHAR(20),
     address TEXT,
-    membership_date DATE DEFAULT (CURDATE()),
+    membership_date DATE,
     status ENUM('active','suspended','expired') DEFAULT 'active'
 );
 
@@ -47,7 +46,7 @@ CREATE TABLE IF NOT EXISTS issued_books (
     book_id INT NOT NULL,
     member_id INT NOT NULL,
     issued_by INT NOT NULL,       -- user (librarian) id
-    issue_date DATE DEFAULT (CURDATE()),
+    issue_date DATE,
     due_date DATE NOT NULL,
     return_date DATE,
     status ENUM('issued','returned','overdue') DEFAULT 'issued',
